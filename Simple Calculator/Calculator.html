@@ -16,6 +16,10 @@
             input{text-align:right;}
         </style>
         <script type="text/javascript">
+            function clearPlaceholder(elementId)
+            {
+                document.getElementById(elementId).placeholder = '';
+            }
             function calc(clicked_id)
             {
                 var val1=parseFloat(document.getElementById("value1").value);
@@ -32,10 +36,13 @@
                     document.getElementById("ans").value=val1/val2;
             }
             function cls()
-            { 
-                value1.value="0";
-                value2.value="0";
-                ans.value="";
+            {
+                document.getElementById("value1").value = "";
+                document.getElementById("value2").value = "";
+                document.getElementById("ans").value = "";
+                //value1.value="0";
+                //value2.value="0";
+                //ans.value="";
             }
         </script>
     </head>
@@ -44,9 +51,9 @@
             <tr><th colspan="4"> Simple Calculator</th></tr>
             <tr>
             <td>value1</td>
-            <td><input type="text" id="value1" value="0"/></td>
+            <td><input type="text" id="value1" value="" placeholder="Enter first number" onfocus="clearPlaceholder(this.id)"/></td>
             <td>value2</td>
-            <td><input type="text" id="value2" value="0"/></td>
+            <td><input type="text" id="value2" value="" placeholder="Enter second number" onfocus="clearPlaceholder(this.id)"/></td>
             </tr>
             <tr>
             <td><input type="button" value="add" id="add" onclick="calc(this.id)"/></td>
